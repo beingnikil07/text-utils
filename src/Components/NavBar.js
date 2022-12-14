@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 
 export default function NavBar(props) {
 /* To use props in a functional based component we have to write props in function argv area */
@@ -29,7 +30,7 @@ export default function NavBar(props) {
               </li>
               <li className="nav-item">
                 <a className="nav-link" href="/">
-                  Link
+                  {props.about}
                 </a>
               </li>
             </ul>
@@ -39,3 +40,16 @@ export default function NavBar(props) {
     </div>
   );
 }
+
+
+// Props can be an array,string,object etc
+NavBar.propTypes={                   
+ // only string can be passed,This is how we can prevent  wrong props data 
+  title:PropTypes.string.isRequired,
+  about:PropTypes.string.isRequired 
+};
+
+NavBar.defaultProps = {
+  title:"set title here",
+  about:"set about here"
+};
