@@ -5,7 +5,7 @@ export default function NavBar(props) {
 /* To use props in a functional based component we have to write props in function argv area */
   return (
     <div>
-      <nav className="navbar navbar-expand-lg bg-light">
+      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container-fluid">
           <a className="navbar-brand" href="/">
             {props.title}
