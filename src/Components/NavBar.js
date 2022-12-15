@@ -1,11 +1,13 @@
 import React from "react";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 export default function NavBar(props) {
-/* To use props in a functional based component we have to write props in function argv area */
+  /* To use props in a functional based component we have to write props in function argv area */
   return (
     <div>
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+      <nav
+        className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}
+      >
         <div className="container-fluid">
           <a className="navbar-brand" href="/">
             {props.title}
@@ -36,20 +38,31 @@ export default function NavBar(props) {
             </ul>
           </div>
         </div>
+        <div className={`form-check form-switch text-${props.mode==='dark'?'light':'dark'}`}>
+          <input
+            className="form-check-input"
+            type="checkbox"
+            onClick={props.toggleMode}
+            role="switch"
+            id="flexSwitchCheckDefault"
+          />
+          <label className="form-check-label" htmlfor="flexSwitchCheckDefault">
+            Enable DarkMode
+          </label>
+        </div>
       </nav>
     </div>
   );
 }
 
-
 // Props can be an array,string,object etc
-NavBar.propTypes={                   
- // only string can be passed,This is how we can prevent  wrong props data 
-  title:PropTypes.string.isRequired,
-  about:PropTypes.string.isRequired 
+NavBar.propTypes = {
+  // only string can be passed,This is how we can prevent  wrong props data
+  title: PropTypes.string.isRequired,
+  about: PropTypes.string.isRequired,
 };
 
 NavBar.defaultProps = {
-  title:"set title here",
-  about:"set about here"
+  title: "set title here",
+  about: "set about here",
 };
