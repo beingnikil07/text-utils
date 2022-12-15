@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
 
 export default function NavBar(props) {
   /* To use props in a functional based component we have to write props in function argv area */
@@ -10,9 +9,9 @@ export default function NavBar(props) {
         className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}
       >
         <div className="container-fluid">
-          <Link className="navbar-brand" to="/">
+          <a className="navbar-brand" href="/">
             {props.title}
-          </Link>
+          </a>
           <button
             className="navbar-toggler"
             type="button"
@@ -27,22 +26,26 @@ export default function NavBar(props) {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <Link className="nav-link active" aria-current="page" to="/">
+                <a
+                  className="nav-a "
+                  style={{
+                    textDecoration: "none",
+                    color: props.mode === "light" ? "black" : "white",
+                  }}
+                  aria-current="page"
+                  href="/"
+                >
                   Home
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/about">
-                  {props.about}
-                </Link>
+                </a>
               </li>
             </ul>
           </div>
         </div>
         <div
-          className={`form-check form-switch text-${
+          className={`form-check form-switch w-25 text-${
             props.mode === "dark" ? "light" : "dark"
           }`}
+          style={{ display: "flex", justifyContent: "flex-end" }}
         >
           <input
             className="form-check-input"
@@ -51,8 +54,8 @@ export default function NavBar(props) {
             role="switch"
             id="flexSwitchCheckDefault"
           />
-          <label className="form-check-label" htmlfor="flexSwitchCheckDefault">
-            Enable DarkMode
+          <label className="form-check-label " htmlFor="flexSwitchCheckDefault">
+            Dark Mode
           </label>
         </div>
       </nav>
